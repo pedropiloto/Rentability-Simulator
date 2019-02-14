@@ -13,8 +13,7 @@ import {
   Col,
   FormGroup,
   Input,
-  Label,
-  Table
+  Label
 } from "reactstrap";
 
 class Example extends React.Component {

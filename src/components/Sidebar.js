@@ -9,9 +9,6 @@ import logo from "assets/img/react-logo.png";
 var ps;
 
 class Sidebar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   activeRoute = routeName =>
     this.props.location.pathname.indexOf(routeName) > -1 ? "active" : "";
 
