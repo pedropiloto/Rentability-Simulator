@@ -1,6 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
 // react plugin for creating notifications over the dashboard
 import NotificationAlert from "react-notification-alert";
+import { traditionalRentingSelectors } from "./../store/selectors";
 
 // reactstrap components
 import {
@@ -18,6 +20,10 @@ import {
 } from "reactstrap";
 
 class TraditionalRenting extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   notifySuccess = place => {
     var options = {};
     options = {
@@ -54,6 +60,8 @@ class TraditionalRenting extends React.Component {
     this.refs.notificationAlert.notificationAlert(options);
   };
   render() {
+    console.log(this.props.property_value);
+    console.log(this.props.income_value);
     return (
       <>
         <div className="content">
@@ -166,8 +174,10 @@ class TraditionalRenting extends React.Component {
                     <CardBody>
                       <Table className="table_results" responsive>
                         <thead>
-                          <th>Resultado</th>
-                          <th>Valor</th>
+                          <tr>
+                            <th>Resultado</th>
+                            <th>Valor</th>
+                          </tr>
                         </thead>
                         <tbody>
                           <tr>
@@ -191,8 +201,10 @@ class TraditionalRenting extends React.Component {
                     <CardBody>
                       <Table className="table_results" responsive>
                         <thead>
-                          <th>Resultado</th>
-                          <th>Valor</th>
+                          <tr>
+                            <th>Resultado</th>
+                            <th>Valor</th>
+                          </tr>
                         </thead>
                         <tbody>
                           <tr>
@@ -217,4 +229,12 @@ class TraditionalRenting extends React.Component {
   }
 }
 
-export default TraditionalRenting;
+export const mapStateToProps = state => ({
+  property_value: traditionalRentingSelectors.getPropertyValue(state),
+  income_value: traditionalRentingSelectors.getIncomeValue(state)
+});
+
+export default connect(
+  mapStateToProps,
+  undefined
+)(TraditionalRenting);
