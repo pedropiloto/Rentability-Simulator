@@ -1,4 +1,4 @@
-import TraditionalRenting from "./views/TraditionalRenting";
+import TraditionalRenting from "./views/TraditionalRenting/index";
 import Example from "./views/Example";
 
 var routes = [

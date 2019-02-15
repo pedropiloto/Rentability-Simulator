@@ -1,8 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
 // react plugin for creating notifications over the dashboard
 import NotificationAlert from "react-notification-alert";
-import { traditionalRentingSelectors } from "./../store/selectors";
 
 // reactstrap components
 import {
@@ -83,6 +81,10 @@ class TraditionalRenting extends React.Component {
                           type="number"
                           id="inputValorImovel"
                           placeholder="90000"
+                          onChange={({ target: { value } }) =>
+                            this.props.setPropertyValue(value)
+                          }
+                          value={this.props.property_value}
                         />
                       </FormGroup>
                       <FormGroup className="col-md-6">
@@ -103,6 +105,10 @@ class TraditionalRenting extends React.Component {
                           type="number"
                           id="inputValorRenda"
                           placeholder="600"
+                          onChange={({ target: { value } }) =>
+                            this.props.setIncomeValue(value)
+                          }
+                          value={this.props.income_value}
                         />
                       </FormGroup>
                       <FormGroup className="col-md-6">
@@ -229,12 +235,4 @@ class TraditionalRenting extends React.Component {
   }
 }
 
-export const mapStateToProps = state => ({
-  property_value: traditionalRentingSelectors.getPropertyValue(state),
-  income_value: traditionalRentingSelectors.getIncomeValue(state)
-});
-
-export default connect(
-  mapStateToProps,
-  undefined
-)(TraditionalRenting);
+export default TraditionalRenting;

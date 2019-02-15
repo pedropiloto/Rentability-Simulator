@@ -8,18 +8,25 @@ export const initialState = {
 };
 
 export default (state = initialState, { type, payload }) => {
+  console.log(payload);
   switch (type) {
-    case ACTION_TYPES.SET_PROPERTY_VALUE: {
+    case ACTION_TYPES.SET_TR_PROPERTY_VALUE: {
       return {
-        ...state.traditionalRenting,
-        property_value: payload.property_value
+        ...state,
+        traditionalRenting: {
+          ...state.traditionalRenting,
+          property_value: payload.property_value
+        }
       };
     }
 
-    case ACTION_TYPES.SET_INCOME_VALUE: {
+    case ACTION_TYPES.SET_TR_INCOME_VALUE: {
       return {
-        ...state.traditionalRenting,
-        income_value: payload.income_value
+        ...state,
+        traditionalRenting: {
+          ...state.traditionalRenting,
+          income_value: payload.income_value
+        }
       };
     }
 
