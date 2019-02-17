@@ -4,7 +4,6 @@ import NotificationAlert from "react-notification-alert";
 
 // reactstrap components
 import {
-  Button,
   Card,
   CardHeader,
   CardBody,
@@ -16,12 +15,21 @@ import {
   Label,
   Table
 } from "reactstrap";
+import {
+  DEFAULT_INCOME_VALUE,
+  DEFAULT_PROPERTY_VALUE,
+  DEFAULT_IRS_TAX,
+  DEFAULT_IMI_VALUE,
+  DEFAULT_CONDOMINIUM_VALUE,
+  DEFAULT_OTHER_EXPENSES_VALUE,
+  DEFAULT_INSURANCE_VALUE,
+  DEFAULT_TOTAL_EXPENSES,
+  DEFAULT_TOTAL_IRS,
+  DEFAULT_TOTAL_PROFIT,
+  DEFAULT_PROFITABILITY_TAX
+} from "../../constants";
 
 class TraditionalRenting extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   notifySuccess = place => {
     var options = {};
     options = {
@@ -57,11 +65,32 @@ class TraditionalRenting extends React.Component {
     };
     this.refs.notificationAlert.notificationAlert(options);
   };
+
   render() {
-    console.log(this.props.property_value);
-    console.log(this.props.income_value);
+    const {
+      propertyValue = DEFAULT_PROPERTY_VALUE,
+      incomeValue = DEFAULT_INCOME_VALUE,
+      iRSTax = DEFAULT_IRS_TAX,
+      imiValue = DEFAULT_IMI_VALUE,
+      condominiumValue = DEFAULT_CONDOMINIUM_VALUE,
+      otherExpenses = DEFAULT_OTHER_EXPENSES_VALUE,
+      extraExpenses = DEFAULT_INSURANCE_VALUE,
+      insuranceValue = DEFAULT_INSURANCE_VALUE,
+      totalExpenses = DEFAULT_TOTAL_EXPENSES,
+      totalIRS = DEFAULT_TOTAL_IRS,
+      totalProfit = DEFAULT_TOTAL_PROFIT,
+      profitabilityTax = DEFAULT_PROFITABILITY_TAX,
+      setIncomeValue,
+      setPropertyValue,
+      setIRSTax,
+      setIMIValue,
+      setCondominiumValue,
+      setOtherExpenses,
+      setExtraExpenses,
+      setInsuranceValue
+    } = this.props;
     return (
-      <>
+      <React.Fragment>
         <div className="content">
           <div className="react-notification-alert-container">
             <NotificationAlert ref="notificationAlert" />
@@ -82,9 +111,9 @@ class TraditionalRenting extends React.Component {
                           id="inputValorImovel"
                           placeholder="90000"
                           onChange={({ target: { value } }) =>
-                            this.props.setPropertyValue(value)
+                            setPropertyValue(value)
                           }
-                          value={this.props.property_value}
+                          value={propertyValue}
                         />
                       </FormGroup>
                       <FormGroup className="col-md-6">
@@ -95,6 +124,10 @@ class TraditionalRenting extends React.Component {
                           type="number"
                           id="inputValorCondominio"
                           placeholder="60"
+                          onChange={({ target: { value } }) =>
+                            setCondominiumValue(value)
+                          }
+                          value={condominiumValue}
                         />
                       </FormGroup>
                     </div>
@@ -106,9 +139,9 @@ class TraditionalRenting extends React.Component {
                           id="inputValorRenda"
                           placeholder="600"
                           onChange={({ target: { value } }) =>
-                            this.props.setIncomeValue(value)
+                            setIncomeValue(value)
                           }
-                          value={this.props.income_value}
+                          value={incomeValue}
                         />
                       </FormGroup>
                       <FormGroup className="col-md-6">
@@ -119,6 +152,10 @@ class TraditionalRenting extends React.Component {
                           type="number"
                           id="inputOutrasDespesas"
                           placeholder="0"
+                          onChange={({ target: { value } }) =>
+                            setOtherExpenses(value)
+                          }
+                          value={otherExpenses}
                         />
                       </FormGroup>
                     </div>
@@ -129,6 +166,8 @@ class TraditionalRenting extends React.Component {
                           type="number"
                           id="inputTaxaIRS"
                           placeholder="28"
+                          onChange={({ target: { value } }) => setIRSTax(value)}
+                          value={iRSTax}
                         />
                       </FormGroup>
                       <FormGroup className="col-md-6">
@@ -139,6 +178,10 @@ class TraditionalRenting extends React.Component {
                           type="number"
                           id="inputDespesasExtraorinarias"
                           placeholder="200"
+                          onChange={({ target: { value } }) =>
+                            setExtraExpenses(value)
+                          }
+                          value={extraExpenses}
                         />
                       </FormGroup>
                     </div>
@@ -149,6 +192,10 @@ class TraditionalRenting extends React.Component {
                           type="number"
                           id="inputValorIMI"
                           placeholder="200"
+                          onChange={({ target: { value } }) =>
+                            setIMIValue(value)
+                          }
+                          value={imiValue}
                         />
                       </FormGroup>
                       <FormGroup className="col-md-6">
@@ -157,69 +204,56 @@ class TraditionalRenting extends React.Component {
                           type="number"
                           id="inputValorSeguro"
                           placeholder="200"
+                          onChange={({ target: { value } }) =>
+                            setInsuranceValue(value)
+                          }
+                          value={insuranceValue}
                         />
                       </FormGroup>
                     </div>
-                    <Button
-                      onClick={() => this.notifySuccess("bc")}
-                      color="primary"
-                    >
-                      Calcular
-                    </Button>
                   </form>
                 </CardBody>
               </Card>
             </Col>
             <Col md="4" className="results">
               <Row>
-                <Col md="12">
+                <Col md="24">
                   <Card className="card_results">
                     <CardHeader>
-                      <CardTitle tag="h4">Despesas</CardTitle>
+                      <CardTitle tag="h4">Resultados</CardTitle>
                     </CardHeader>
                     <CardBody>
                       <Table className="table_results" responsive>
                         <thead>
                           <tr>
-                            <th>Resultado</th>
+                            <th>Dado</th>
                             <th>Valor</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <td>Total custos anuais (s/ IRS)</td>
-                            <td>1000</td>
+                            <td>{totalExpenses}</td>
                           </tr>
                           <tr>
                             <td>IRS</td>
-                            <td>1000</td>
+                            <td>{totalIRS}</td>
                           </tr>
-                        </tbody>
-                      </Table>
-                    </CardBody>
-                  </Card>
-                </Col>
-                <Col md="12" className="card_results">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle tag="h4">Receitas</CardTitle>
-                    </CardHeader>
-                    <CardBody>
-                      <Table className="table_results" responsive>
-                        <thead>
                           <tr>
-                            <th>Resultado</th>
-                            <th>Valor</th>
+                            <td>Total Despesas</td>
+                            <td>4000</td>
                           </tr>
-                        </thead>
-                        <tbody>
                           <tr>
                             <td>Rendimento Líquido (Anual)</td>
-                            <td>1000</td>
+                            <td>{totalProfit}</td>
                           </tr>
                           <tr>
                             <td>Taxa Rentabilidade (%)</td>
-                            <td>1000</td>
+                            <td>{profitabilityTax}</td>
+                          </tr>
+                          <tr>
+                            <td>Prazo Retorno</td>
+                            <td>20</td>
                           </tr>
                         </tbody>
                       </Table>
@@ -230,7 +264,7 @@ class TraditionalRenting extends React.Component {
             </Col>
           </Row>
         </div>
-      </>
+      </React.Fragment>
     );
   }
 }

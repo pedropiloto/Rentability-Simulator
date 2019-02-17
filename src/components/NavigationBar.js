@@ -6,10 +6,6 @@ import classNames from "classnames";
 import { Navbar, Container } from "reactstrap";
 
 class NavigationBar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <>
