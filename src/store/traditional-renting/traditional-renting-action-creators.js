@@ -38,6 +38,10 @@ export const setTotalExpenses = totalExpenses => ({
   type: actionTypes.SET_TR_TOTAL_EXPENSES,
   payload: { totalExpenses }
 });
+export const setTotalExpensesWithIRS = totalExpensesWithIRS => ({
+  type: actionTypes.SET_TR_TOTAL_EXPENSES_WITH_IRS,
+  payload: { totalExpensesWithIRS }
+});
 export const setTotalIRS = totalIRS => ({
   type: actionTypes.SET_TR_TOTAL_IRS,
   payload: { totalIRS }
@@ -49,4 +53,8 @@ export const setTotalProfit = totalProfit => ({
 export const setProfitabilityTax = profitabilityTax => ({
   type: actionTypes.SET_TR_PROFITABILITY_TAX,
   payload: { profitabilityTax }
+});
+export const setReturnTime = returnTime => ({
+  type: actionTypes.SET_TR_RETURN_TIME,
+  payload: { returnTime }
 });

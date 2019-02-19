@@ -13,9 +13,13 @@ export const mapStateToProps = state => ({
   extraExpenses: traditionalRentingSelectors.getExtraExpenses(state),
   insuranceValue: traditionalRentingSelectors.getInsuranceValue(state),
   totalExpenses: traditionalRentingSelectors.getTotalExpenses(state),
+  totalExpensesWithIRS: traditionalRentingSelectors.getTotalExpensesWithIRS(
+    state
+  ),
   totalIRS: traditionalRentingSelectors.getTotalIRS(state),
   totalProfit: traditionalRentingSelectors.getTotalProfit(state),
-  profitabilityTax: traditionalRentingSelectors.getProfitabilityTax(state)
+  profitabilityTax: traditionalRentingSelectors.getProfitabilityTax(state),
+  returnTime: traditionalRentingSelectors.getReturnTime(state)
 });
 
 export const mapDispatchToProps = {

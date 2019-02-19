@@ -11,7 +11,9 @@ import {
   DEFAULT_TOTAL_EXPENSES,
   DEFAULT_TOTAL_IRS,
   DEFAULT_TOTAL_PROFIT,
-  DEFAULT_PROFITABILITY_TAX
+  DEFAULT_PROFITABILITY_TAX,
+  DEFAULT_TOTAL_EXPENSES_WITH_IRS,
+  DEFAULT_RETURN_TIME
 } from "../../constants";
 
 export const initialState = {
@@ -25,9 +27,11 @@ export const initialState = {
     extraExpenses: DEFAULT_EXTRA_EXPENSES_VALUE,
     insuranceValue: DEFAULT_INSURANCE_VALUE,
     totalExpenses: DEFAULT_TOTAL_EXPENSES,
+    totalExpensesWithIRS: DEFAULT_TOTAL_EXPENSES_WITH_IRS,
     totalIRS: DEFAULT_TOTAL_IRS,
     totalProfit: DEFAULT_TOTAL_PROFIT,
-    profitabilityTax: DEFAULT_PROFITABILITY_TAX
+    profitabilityTax: DEFAULT_PROFITABILITY_TAX,
+    returnTime: DEFAULT_RETURN_TIME
   }
 };
 
@@ -115,6 +119,15 @@ export default (state = initialState, { type, payload }) => {
         }
       };
     }
+    case ACTION_TYPES.SET_TR_TOTAL_EXPENSES_WITH_IRS: {
+      return {
+        ...state,
+        traditionalRenting: {
+          ...state.traditionalRenting,
+          totalExpensesWithIRS: payload.totalExpensesWithIRS
+        }
+      };
+    }
     case ACTION_TYPES.SET_TR_TOTAL_IRS: {
       return {
         ...state,
@@ -125,7 +138,6 @@ export default (state = initialState, { type, payload }) => {
       };
     }
     case ACTION_TYPES.SET_TR_TOTAL_PROFIT: {
-      console.log("I'm here");
       return {
         ...state,
         traditionalRenting: {
@@ -140,6 +152,15 @@ export default (state = initialState, { type, payload }) => {
         traditionalRenting: {
           ...state.traditionalRenting,
           profitabilityTax: payload.profitabilityTax
+        }
+      };
+    }
+    case ACTION_TYPES.SET_TR_RETURN_TIME: {
+      return {
+        ...state,
+        traditionalRenting: {
+          ...state.traditionalRenting,
+          returnTime: payload.returnTime
         }
       };
     }
