@@ -1,4 +1,7 @@
-/build
 /node_modules
 package-lock.json
 .env
+src/*
+public/*
+build/static/css/*.map
+build/static/js/*.map
