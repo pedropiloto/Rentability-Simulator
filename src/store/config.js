@@ -3,10 +3,13 @@ import { combineReducers } from "redux";
 import createSagaMiddleware from "redux-saga";
 
 import traditionalRentingReducer from "./traditional-renting/traditional-renting-reducer";
+import localRentingReducer from "./local-renting/local-renting-reducer";
+
 import rootSaga from "./root-saga";
 
 const reducer = combineReducers({
-  traditionalRenting: traditionalRentingReducer
+  traditionalRenting: traditionalRentingReducer,
+  localRenting: localRentingReducer
 });
 
 export default () => {

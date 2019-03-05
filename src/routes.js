@@ -1,4 +1,5 @@
 import TraditionalRenting from "./views/TraditionalRenting/index";
+import LocalRenting from "./views/LocalRenting/index";
 
 var routes = [
   {
@@ -6,12 +7,12 @@ var routes = [
     name: "Arrendamento Tradicional",
     icon: "tim-icons icon-istanbul",
     component: TraditionalRenting
+  },
+  {
+    path: "/simulador-rentabilidade-arrendamento-local",
+    name: "Arrendamento Local",
+    icon: "tim-icons icon-world",
+    component: LocalRenting
   }
-  // {
-  //   path: "/exemplo",
-  //   name: "Exemplo",
-  //   icon: "tim-icons icon-istanbul",
-  //   component: Example
-  // }
 ];
 export default routes;

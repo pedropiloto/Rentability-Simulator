@@ -23,14 +23,14 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = {
-  setPropertyValue: actions.setPropertyValue,
-  setIncomeValue: actions.setIncomeValue,
-  setIRSTax: actions.setIRSTax,
-  setIMIValue: actions.setIMIValue,
-  setCondominiumValue: actions.setCondominiumValue,
-  setOtherExpenses: actions.setOtherExpenses,
-  setExtraExpenses: actions.setExtraExpenses,
-  setInsuranceValue: actions.setInsuranceValue
+  setPropertyValue: actions.setTRPropertyValue,
+  setIncomeValue: actions.setTRIncomeValue,
+  setIRSTax: actions.setTRIRSTax,
+  setIMIValue: actions.setTRIMIValue,
+  setCondominiumValue: actions.setTRCondominiumValue,
+  setOtherExpenses: actions.setTROtherExpenses,
+  setExtraExpenses: actions.setTRExtraExpenses,
+  setInsuranceValue: actions.setTRInsuranceValue
 };
 
 export default connect(

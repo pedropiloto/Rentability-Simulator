@@ -15,21 +15,6 @@ import {
   Label,
   Table
 } from "reactstrap";
-import {
-  DEFAULT_INCOME_VALUE,
-  DEFAULT_PROPERTY_VALUE,
-  DEFAULT_IRS_TAX,
-  DEFAULT_IMI_VALUE,
-  DEFAULT_CONDOMINIUM_VALUE,
-  DEFAULT_OTHER_EXPENSES_VALUE,
-  DEFAULT_INSURANCE_VALUE,
-  DEFAULT_TOTAL_EXPENSES,
-  DEFAULT_TOTAL_IRS,
-  DEFAULT_TOTAL_PROFIT,
-  DEFAULT_PROFITABILITY_TAX,
-  DEFAULT_TOTAL_EXPENSES_WITH_IRS,
-  DEFAULT_RETURN_TIME
-} from "../../constants";
 
 class TraditionalRenting extends React.Component {
   notifySuccess = place => {
@@ -70,20 +55,20 @@ class TraditionalRenting extends React.Component {
 
   render() {
     const {
-      propertyValue = DEFAULT_PROPERTY_VALUE,
-      incomeValue = DEFAULT_INCOME_VALUE,
-      iRSTax = DEFAULT_IRS_TAX,
-      imiValue = DEFAULT_IMI_VALUE,
-      condominiumValue = DEFAULT_CONDOMINIUM_VALUE,
-      otherExpenses = DEFAULT_OTHER_EXPENSES_VALUE,
-      extraExpenses = DEFAULT_INSURANCE_VALUE,
-      insuranceValue = DEFAULT_INSURANCE_VALUE,
-      totalExpenses = DEFAULT_TOTAL_EXPENSES,
-      totalExpensesWithIRS = DEFAULT_TOTAL_EXPENSES_WITH_IRS,
-      totalIRS = DEFAULT_TOTAL_IRS,
-      totalProfit = DEFAULT_TOTAL_PROFIT,
-      profitabilityTax = DEFAULT_PROFITABILITY_TAX,
-      returnTime = DEFAULT_RETURN_TIME,
+      propertyValue,
+      incomeValue,
+      iRSTax,
+      imiValue,
+      condominiumValue,
+      otherExpenses,
+      extraExpenses,
+      insuranceValue,
+      totalExpenses,
+      totalExpensesWithIRS,
+      totalIRS,
+      totalProfit,
+      profitabilityTax,
+      returnTime,
       setIncomeValue,
       setPropertyValue,
       setIRSTax,

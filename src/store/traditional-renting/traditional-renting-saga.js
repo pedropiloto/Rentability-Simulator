@@ -1,12 +1,12 @@
 import { select, put } from "redux-saga/effects";
 import { traditionalRentingSelectors } from "../../store/selectors";
 import {
-  setTotalExpenses,
-  setTotalExpensesWithIRS,
-  setTotalIRS,
-  setTotalProfit,
-  setProfitabilityTax,
-  setReturnTime
+  setTRTotalExpenses,
+  setTRTotalExpensesWithIRS,
+  setTRTotalIRS,
+  setTRTotalProfit,
+  setTRProfitabilityTax,
+  setTRReturnTime
 } from "./traditional-renting-action-creators";
 
 export function* calculateTraditionalRentingRentability() {
@@ -43,16 +43,16 @@ export function* calculateTraditionalRentingRentability() {
     const totalProfit = Number(incomeValue) * 12 - (totalExpenses + totalIRs);
     const profitabilityTax = (totalProfit / Number(propertyValue)) * 100;
     const returnTime = Math.floor((propertyValue / totalProfit) * 100) / 100;
-    yield put(setTotalExpenses(Math.floor(totalExpenses * 100) / 100));
+    yield put(setTRTotalExpenses(Math.floor(totalExpenses * 100) / 100));
     yield put(
-      setTotalExpensesWithIRS(
+      setTRTotalExpensesWithIRS(
         Math.floor((totalExpenses + totalIRs) * 100) / 100
       )
     );
-    yield put(setTotalIRS(Math.floor(totalIRs * 100) / 100));
-    yield put(setTotalProfit(Math.floor(totalProfit * 100) / 100));
-    yield put(setProfitabilityTax(Math.floor(profitabilityTax * 100) / 100));
-    yield put(setReturnTime(returnTime));
+    yield put(setTRTotalIRS(Math.floor(totalIRs * 100) / 100));
+    yield put(setTRTotalProfit(Math.floor(totalProfit * 100) / 100));
+    yield put(setTRProfitabilityTax(Math.floor(profitabilityTax * 100) / 100));
+    yield put(setTRReturnTime(returnTime));
   } catch (e) {
     console.log(e);
   }

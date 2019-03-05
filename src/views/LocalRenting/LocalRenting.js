@@ -16,19 +16,8 @@ import {
   Table
 } from "reactstrap";
 import {
-  DEFAULT_INCOME_VALUE,
-  DEFAULT_PROPERTY_VALUE,
-  DEFAULT_IRS_TAX,
-  DEFAULT_IMI_VALUE,
-  DEFAULT_CONDOMINIUM_VALUE,
-  DEFAULT_OTHER_EXPENSES_VALUE,
-  DEFAULT_INSURANCE_VALUE,
-  DEFAULT_TOTAL_EXPENSES,
-  DEFAULT_TOTAL_IRS,
-  DEFAULT_TOTAL_PROFIT,
-  DEFAULT_PROFITABILITY_TAX,
-  DEFAULT_TOTAL_EXPENSES_WITH_IRS,
-  DEFAULT_RETURN_TIME
+  LR_AUTONOMOUS_TRIBUTATION,
+  LR_SIMPLIFIED_REGIME
 } from "../../constants";
 
 class TraditionalRenting extends React.Component {
@@ -70,29 +59,52 @@ class TraditionalRenting extends React.Component {
 
   render() {
     const {
-      propertyValue = DEFAULT_PROPERTY_VALUE,
-      incomeValue = DEFAULT_INCOME_VALUE,
-      iRSTax = DEFAULT_IRS_TAX,
-      imiValue = DEFAULT_IMI_VALUE,
-      condominiumValue = DEFAULT_CONDOMINIUM_VALUE,
-      otherExpenses = DEFAULT_OTHER_EXPENSES_VALUE,
-      extraExpenses = DEFAULT_INSURANCE_VALUE,
-      insuranceValue = DEFAULT_INSURANCE_VALUE,
-      totalExpenses = DEFAULT_TOTAL_EXPENSES,
-      totalExpensesWithIRS = DEFAULT_TOTAL_EXPENSES_WITH_IRS,
-      totalIRS = DEFAULT_TOTAL_IRS,
-      totalProfit = DEFAULT_TOTAL_PROFIT,
-      profitabilityTax = DEFAULT_PROFITABILITY_TAX,
-      returnTime = DEFAULT_RETURN_TIME,
-      setIncomeValue,
+      propertyValue,
+      tributationType,
+      totalExpenses,
+      totalExpensesWithIRS,
+      totalIRS,
+      totalProfit,
+      profitabilityTax,
+      returnTime,
       setPropertyValue,
-      setIRSTax,
-      setIMIValue,
-      setCondominiumValue,
-      setOtherExpenses,
-      setExtraExpenses,
-      setInsuranceValue
+      setTributationType
     } = this.props;
+    console.log(tributationType);
+    let taxRate;
+    if (tributationType === LR_AUTONOMOUS_TRIBUTATION) {
+      taxRate = (
+        <FormGroup className="col-md-6">
+          <Label for="inputTaxaTributacao">Taxa Tributação</Label>
+          <Input
+            type="number"
+            id="inputTaxaTributacao"
+            placeholder="28"
+            onChange={({ target: { value } }) =>
+              //setInsuranceValue(value)
+              {}
+            }
+            //value={insuranceValue}
+          />
+        </FormGroup>
+      );
+    } else if (tributationType === LR_SIMPLIFIED_REGIME) {
+      taxRate = (
+        <FormGroup className="col-md-6">
+          <Label for="inputTaxaEscalao">Taxa Escalão</Label>
+          <Input
+            type="number"
+            id="inputTaxaEscalao"
+            placeholder="23.6"
+            onChange={({ target: { value } }) =>
+              //setInsuranceValue(value)
+              {}
+            }
+            //value={insuranceValue}
+          />
+        </FormGroup>
+      );
+    }
     return (
       <React.Fragment>
         <div className="content">
@@ -129,49 +141,55 @@ class TraditionalRenting extends React.Component {
                           id="inputValorCondominio"
                           placeholder="60"
                           onChange={({ target: { value } }) =>
-                            setCondominiumValue(value)
+                            //setCondominiumValue(value)
+                            {}
                           }
-                          value={condominiumValue}
+                          //value={condominiumValue}
                         />
                       </FormGroup>
                     </div>
                     <div className="form-row">
                       <FormGroup className="col-md-6">
-                        <Label for="inputValorRenda">Valor Renda</Label>
+                        <Label for="inputValorRenda">Valor Médio Noite</Label>
                         <Input
                           type="number"
                           id="inputValorRenda"
                           placeholder="600"
                           onChange={({ target: { value } }) =>
-                            setIncomeValue(value)
+                            //setIncomeValue(value)
+                            {}
                           }
-                          value={incomeValue}
+                          //value={incomeValue}
                         />
                       </FormGroup>
                       <FormGroup className="col-md-6">
-                        <Label for="inputOutrasDespesas">
-                          Outras Despesas (Mensal)
-                        </Label>
+                        <Label for="inputOutrasDespesas">Valor Seguro</Label>
                         <Input
                           type="number"
                           id="inputOutrasDespesas"
                           placeholder="0"
                           onChange={({ target: { value } }) =>
-                            setOtherExpenses(value)
+                            //setOtherExpenses(value)
+                            {}
                           }
-                          value={otherExpenses}
+                          //value={otherExpenses}
                         />
                       </FormGroup>
                     </div>
                     <div className="form-row">
                       <FormGroup className="col-md-6">
-                        <Label for="inputTaxaIRS">Taxa IRS (%)</Label>
+                        <Label for="inputTaxaIRS">
+                          Taxa Média Ocupação (%)
+                        </Label>
                         <Input
                           type="number"
                           id="inputTaxaIRS"
                           placeholder="28"
-                          onChange={({ target: { value } }) => setIRSTax(value)}
-                          value={iRSTax}
+                          onChange={({ target: { value } }) =>
+                            //setIRSTax(value)
+                            {}
+                          }
+                          //value={iRSTax}
                         />
                       </FormGroup>
                       <FormGroup className="col-md-6">
@@ -183,11 +201,72 @@ class TraditionalRenting extends React.Component {
                           id="inputDespesasExtraorinarias"
                           placeholder="200"
                           onChange={({ target: { value } }) =>
-                            setExtraExpenses(value)
+                            //setExtraExpenses(value)
+                            {}
                           }
-                          value={extraExpenses}
+                          //value={extraExpenses}
                         />
                       </FormGroup>
+                    </div>
+                    <div className="form-row">
+                      <FormGroup className="col-md-6">
+                        <Label for="inputValorImovel">
+                          Despesa Por Ocupação (%)
+                        </Label>
+                        <Input
+                          type="number"
+                          id="inputValorIMI"
+                          placeholder="200"
+                          onChange={({ target: { value } }) =>
+                            //setIMIValue(value)
+                            {}
+                          }
+                          //value={imiValue}
+                        />
+                      </FormGroup>
+                      <div className="col-md-6">
+                        <FormGroup className="formGroupNoMargin">
+                          <Label>Tipo Tributação</Label>
+                        </FormGroup>
+                        <div className="tipoTributacao">
+                          <FormGroup check inline className="form-check-radio">
+                            <Label className="form-check-label">
+                              <Input
+                                type="radio"
+                                name="tributationType"
+                                id="autonomousTributation"
+                                value={LR_AUTONOMOUS_TRIBUTATION}
+                                onChange={({ target: { value } }) =>
+                                  setTributationType(value)
+                                }
+                                defaultChecked={
+                                  tributationType === LR_AUTONOMOUS_TRIBUTATION
+                                }
+                              />
+                              Tributação Autónoma
+                              <span className="form-check-sign" />
+                            </Label>
+                          </FormGroup>
+                          <FormGroup check inline className="form-check-radio">
+                            <Label className="form-check-label">
+                              <Input
+                                type="radio"
+                                name="tributationType"
+                                id="simplifiedRegime"
+                                value={LR_SIMPLIFIED_REGIME}
+                                onChange={({ target: { value } }) =>
+                                  setTributationType(value)
+                                }
+                                defaultChecked={
+                                  tributationType === LR_SIMPLIFIED_REGIME
+                                }
+                              />
+                              Regime Simplificado
+                              <span className="form-check-sign" />
+                            </Label>
+                          </FormGroup>
+                        </div>
+                      </div>
                     </div>
                     <div className="form-row">
                       <FormGroup className="col-md-6">
@@ -197,23 +276,13 @@ class TraditionalRenting extends React.Component {
                           id="inputValorIMI"
                           placeholder="200"
                           onChange={({ target: { value } }) =>
-                            setIMIValue(value)
+                            //setIMIValue(value)
+                            {}
                           }
-                          value={imiValue}
+                          //value={imiValue}
                         />
                       </FormGroup>
-                      <FormGroup className="col-md-6">
-                        <Label for="inputValorSeguro">Valor Seguro</Label>
-                        <Input
-                          type="number"
-                          id="inputValorSeguro"
-                          placeholder="200"
-                          onChange={({ target: { value } }) =>
-                            setInsuranceValue(value)
-                          }
-                          value={insuranceValue}
-                        />
-                      </FormGroup>
+                      {taxRate}
                     </div>
                   </form>
                 </CardBody>

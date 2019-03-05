@@ -1,60 +1,60 @@
 import * as actionTypes from "../action-types";
 
-export const setPropertyValue = propertyValue => ({
+export const setTRPropertyValue = propertyValue => ({
   type: actionTypes.SET_TR_PROPERTY_VALUE,
   payload: { propertyValue }
 });
 
-export const setIncomeValue = incomeValue => ({
+export const setTRIncomeValue = incomeValue => ({
   type: actionTypes.SET_TR_INCOME_VALUE,
   payload: { incomeValue }
 });
 
-export const setIRSTax = iRSTax => ({
+export const setTRIRSTax = iRSTax => ({
   type: actionTypes.SET_TR_IRS_TAX,
   payload: { iRSTax }
 });
-export const setIMIValue = imiValue => ({
+export const setTRIMIValue = imiValue => ({
   type: actionTypes.SET_TR_IMI_VALUE,
   payload: { imiValue }
 });
-export const setCondominiumValue = condominiumValue => ({
+export const setTRCondominiumValue = condominiumValue => ({
   type: actionTypes.SET_TR_CONDOMINIUM_VALUE,
   payload: { condominiumValue }
 });
-export const setOtherExpenses = otherExpenses => ({
+export const setTROtherExpenses = otherExpenses => ({
   type: actionTypes.SET_TR_OTHER_EXPENSES,
   payload: { otherExpenses }
 });
-export const setExtraExpenses = extraExpenses => ({
+export const setTRExtraExpenses = extraExpenses => ({
   type: actionTypes.SET_TR_EXTRA_EXPENSES,
   payload: { extraExpenses }
 });
-export const setInsuranceValue = insuranceValue => ({
+export const setTRInsuranceValue = insuranceValue => ({
   type: actionTypes.SET_TR_INSURANCE_VALUE,
   payload: { insuranceValue }
 });
-export const setTotalExpenses = totalExpenses => ({
+export const setTRTotalExpenses = totalExpenses => ({
   type: actionTypes.SET_TR_TOTAL_EXPENSES,
   payload: { totalExpenses }
 });
-export const setTotalExpensesWithIRS = totalExpensesWithIRS => ({
+export const setTRTotalExpensesWithIRS = totalExpensesWithIRS => ({
   type: actionTypes.SET_TR_TOTAL_EXPENSES_WITH_IRS,
   payload: { totalExpensesWithIRS }
 });
-export const setTotalIRS = totalIRS => ({
+export const setTRTotalIRS = totalIRS => ({
   type: actionTypes.SET_TR_TOTAL_IRS,
   payload: { totalIRS }
 });
-export const setTotalProfit = totalProfit => ({
+export const setTRTotalProfit = totalProfit => ({
   type: actionTypes.SET_TR_TOTAL_PROFIT,
   payload: { totalProfit }
 });
-export const setProfitabilityTax = profitabilityTax => ({
+export const setTRProfitabilityTax = profitabilityTax => ({
   type: actionTypes.SET_TR_PROFITABILITY_TAX,
   payload: { profitabilityTax }
 });
-export const setReturnTime = returnTime => ({
+export const setTRReturnTime = returnTime => ({
   type: actionTypes.SET_TR_RETURN_TIME,
   payload: { returnTime }
 });
