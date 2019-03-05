@@ -2,9 +2,6 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
-import { Provider } from "react-redux";
-
-import createStore from "./store/config";
 
 // core components
 import Footer from "./components/Footer";
@@ -66,24 +63,22 @@ class Admin extends React.Component {
 
   render() {
     return (
-      <Provider store={createStore()}>
-        <div className="wrapper">
-          <Sidebar
+      <div className="wrapper">
+        <Sidebar
+          {...this.props}
+          routes={routes}
+          toggleSidebar={this.toggleSidebar}
+        />
+        <div className="main-panel" ref="mainPanel" data="blue">
+          <NavigationBar
             {...this.props}
-            routes={routes}
             toggleSidebar={this.toggleSidebar}
+            sidebarOpened={this.state.sidebarOpened}
           />
-          <div className="main-panel" ref="mainPanel" data="blue">
-            <NavigationBar
-              {...this.props}
-              toggleSidebar={this.toggleSidebar}
-              sidebarOpened={this.state.sidebarOpened}
-            />
-            <Switch>{this.getRoutes(routes)}</Switch>
-            <Footer fluid />
-          </div>
+          <Switch>{this.getRoutes(routes)}</Switch>
+          <Footer fluid />
         </div>
-      </Provider>
+      </div>
     );
   }
 }
