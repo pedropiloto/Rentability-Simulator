@@ -4,7 +4,7 @@ import { PropTypes } from "prop-types";
 import PerfectScrollbar from "perfect-scrollbar";
 
 import { Nav } from "reactstrap";
-import logo from "assets/img/react-logo.png";
+import logo from "assets/img/logo.png";
 
 var ps;
 
@@ -41,11 +41,11 @@ class Sidebar extends React.Component {
               onClick={this.props.toggleSidebar}
             >
               <div className="logo-img">
-                <img src={logo} alt="react-logo" />
+                <img src={logo} alt="logótipo investemais" />
               </div>
             </a>{" "}
             <span className="simple-text" onClick={this.props.toggleSidebar}>
-              Simulador Rentabilidade
+              Investe Mais
             </span>
           </div>
           )
