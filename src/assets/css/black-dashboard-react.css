@@ -10630,7 +10630,8 @@ hr {
       font-size: 17px;
       line-height: 20px;
       width: 26px; }
-    .sidebar .sidebar-wrapper [data-toggle="collapse"] ~ div > ul > li:hover > a .sidebar-mini-icon, .sidebar .sidebar-wrapper [data-toggle="collapse"] ~ div > ul > li:hover > a .sidebar-normal,
+    .sidebar .sidebar-wrapper [data-toggle="collapse"] ~ div > ul > li:hover > a .sidebar-mini-icon,
+    .sidebar .sidebar-wrapper [data-toggle="collapse"] ~ div > ul > li:hover > a .sidebar-normal,
     .off-canvas-sidebar .sidebar-wrapper [data-toggle="collapse"] ~ div > ul > li:hover > a .sidebar-mini-icon,
     .off-canvas-sidebar .sidebar-wrapper [data-toggle="collapse"] ~ div > ul > li:hover > a .sidebar-normal {
       color: #ffffff; }
@@ -10658,7 +10659,6 @@ hr {
       height: 60px; }
   .sidebar .nav,
   .off-canvas-sidebar .nav {
-    margin-top: 20px;
     display: block; }
     .sidebar .nav .caret,
     .off-canvas-sidebar .nav .caret {
@@ -10688,7 +10688,8 @@ hr {
     .sidebar .nav li:first-child > a,
     .off-canvas-sidebar .nav li:first-child > a {
       margin: 0 15px; }
-    .sidebar .nav li:hover:not(.active) > a p, .sidebar .nav li:hover:not(.active) > a i,
+    .sidebar .nav li:hover:not(.active) > a p,
+    .sidebar .nav li:hover:not(.active) > a i,
     .sidebar .nav li:focus:not(.active) > a p,
     .sidebar .nav li:focus:not(.active) > a i,
     .off-canvas-sidebar .nav li:hover:not(.active) > a p,
@@ -10704,7 +10705,8 @@ hr {
     .sidebar .nav li.active > a:not([data-toggle="collapse"]),
     .off-canvas-sidebar .nav li.active > a:not([data-toggle="collapse"]) {
       background: transparent; }
-      .sidebar .nav li.active > a:not([data-toggle="collapse"]) i, .sidebar .nav li.active > a:not([data-toggle="collapse"]) p,
+      .sidebar .nav li.active > a:not([data-toggle="collapse"]) i,
+      .sidebar .nav li.active > a:not([data-toggle="collapse"]) p,
       .off-canvas-sidebar .nav li.active > a:not([data-toggle="collapse"]) i,
       .off-canvas-sidebar .nav li.active > a:not([data-toggle="collapse"]) p {
         color: white; }
@@ -10729,7 +10731,8 @@ hr {
       .sidebar .nav li.active > a[data-toggle="collapse"] + div .nav .active a,
       .off-canvas-sidebar .nav li.active > a[data-toggle="collapse"] + div .nav .active a {
         box-shadow: none; }
-        .sidebar .nav li.active > a[data-toggle="collapse"] + div .nav .active a .sidebar-mini-icon, .sidebar .nav li.active > a[data-toggle="collapse"] + div .nav .active a .sidebar-normal,
+        .sidebar .nav li.active > a[data-toggle="collapse"] + div .nav .active a .sidebar-mini-icon,
+        .sidebar .nav li.active > a[data-toggle="collapse"] + div .nav .active a .sidebar-normal,
         .off-canvas-sidebar .nav li.active > a[data-toggle="collapse"] + div .nav .active a .sidebar-mini-icon,
         .off-canvas-sidebar .nav li.active > a[data-toggle="collapse"] + div .nav .active a .sidebar-normal {
           color: #ffffff;
@@ -10775,7 +10778,7 @@ hr {
   .sidebar .logo,
   .off-canvas-sidebar .logo {
     position: relative;
-    padding: 0.5rem 0.7rem;
+    padding: 0.5rem;
     z-index: 4; }
     .sidebar .logo a.logo-mini,
     .off-canvas-sidebar .logo a.logo-mini {
@@ -10783,8 +10786,8 @@ hr {
       float: left;
       width: 34px;
       text-align: center;
-      margin-left: 12px;
-      margin-right: 12px; }
+      margin-left: 6px;
+      margin-right: 6px; }
       .sidebar .logo a.logo-mini img,
       .off-canvas-sidebar .logo a.logo-mini img {
         border-radius: 50%;
@@ -10800,7 +10803,7 @@ hr {
       transform: translate3d(0px, 0, 0); }
     .sidebar .logo:after,
     .off-canvas-sidebar .logo:after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 0;
       right: 15px;
@@ -10821,6 +10824,7 @@ hr {
       padding: 0.5rem 0;
       display: block;
       white-space: nowrap;
+      font-size: 12px;
       color: #ffffff;
       text-decoration: none;
       font-weight: 400;
@@ -10860,7 +10864,7 @@ hr {
     position: relative; }
     .sidebar .user:after,
     .off-canvas-sidebar .user:after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 0;
       right: 15px;
@@ -10954,12 +10958,12 @@ hr {
   .sidebar,
   .main-panel,
   .sidebar-wrapper {
-    -webkit-transition-property: top,bottom,width;
-    transition-property: top,bottom, width;
-    -webkit-transition-duration: .2s,.2s, .35s;
-    transition-duration: .2s,.2s, .35s;
-    -webkit-transition-timing-function: linear,linear,ease;
-    transition-timing-function: linear,linear,ease; }
+    -webkit-transition-property: top, bottom, width;
+    transition-property: top, bottom, width;
+    -webkit-transition-duration: 0.2s, 0.2s, 0.35s;
+    transition-duration: 0.2s, 0.2s, 0.35s;
+    -webkit-transition-timing-function: linear, linear, ease;
+    transition-timing-function: linear, linear, ease; }
   .sidebar-mini .visible-on-sidebar-regular {
     display: none !important; }
   .sidebar-mini .visible-on-sidebar-mini {
@@ -11030,7 +11034,7 @@ hr {
   height: 260px;
   padding-top: 80px;
   padding-bottom: 45px;
-  background: #141E30;
+  background: #141e30;
   /* fallback for old browsers */
   background: -webkit-gradient(linear, left top, right top, from(#0c2646), color-stop(60%, #204065), to(#2a5788));
   background: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);
@@ -11880,6 +11884,38 @@ textarea.form-control {
 .input-group-prepend .tim-icons,
 .input-group-append .tim-icons {
   font-size: 1rem; }
+
+.card_results {
+  margin-bottom: 26px !important; }
+
+.table_results {
+  margin-bottom: 44px !important; }
+
+.table-responsive {
+  overflow: hidden !important; }
+
+.formGroupNoMargin {
+  margin-bottom: 0px !important; }
+
+#circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px; }
+
+.loader {
+  width: calc(100% - 0px);
+  height: calc(100% - 0px);
+  border: 8px solid #162534;
+  border-top: 8px solid #09f;
+  border-radius: 50%;
+  animation: rotate 5s linear infinite; }
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg); } }
 
 /*
  * Container style

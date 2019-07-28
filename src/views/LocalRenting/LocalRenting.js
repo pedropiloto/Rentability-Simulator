@@ -20,59 +20,10 @@ import {
   LR_SIMPLIFIED_REGIME
 } from "../../constants";
 
-class TraditionalRenting extends React.Component {
-  notifySuccess = place => {
-    var options = {};
-    options = {
-      place: place,
-      message: (
-        <div>
-          <div>
-            <b>Sucesso</b>
-          </div>
-        </div>
-      ),
-      type: "success",
-      icon: "tim-icons icon-check-2",
-      autoDismiss: 7
-    };
-    this.refs.notificationAlert.notificationAlert(options);
-  };
-
-  notifyError = place => {
-    var options = {};
-    options = {
-      place: place,
-      message: (
-        <div>
-          <div>
-            <b>Erro</b>
-          </div>
-        </div>
-      ),
-      type: "danger",
-      icon: "tim-icons icon-alert-circle-exec",
-      autoDismiss: 7
-    };
-    this.refs.notificationAlert.notificationAlert(options);
-  };
-
+class LocalRenting extends React.Component {
   render() {
-    const {
-      propertyValue,
-      tributationType,
-      totalExpenses,
-      totalExpensesWithIRS,
-      totalIRS,
-      totalProfit,
-      profitabilityTax,
-      returnTime,
-      setPropertyValue,
-      setTributationType
-    } = this.props;
-    console.log(tributationType);
     let taxRate;
-    if (tributationType === LR_AUTONOMOUS_TRIBUTATION) {
+    if (this.props.tributationType === LR_AUTONOMOUS_TRIBUTATION) {
       taxRate = (
         <FormGroup className="col-md-6">
           <Label for="inputTaxaTributacao">Taxa Tributação</Label>
@@ -81,14 +32,13 @@ class TraditionalRenting extends React.Component {
             id="inputTaxaTributacao"
             placeholder="28"
             onChange={({ target: { value } }) =>
-              //setInsuranceValue(value)
-              {}
+              this.props.setTributationTax(value)
             }
-            //value={insuranceValue}
+            value={this.props.tributationTax}
           />
         </FormGroup>
       );
-    } else if (tributationType === LR_SIMPLIFIED_REGIME) {
+    } else if (this.props.tributationType === LR_SIMPLIFIED_REGIME) {
       taxRate = (
         <FormGroup className="col-md-6">
           <Label for="inputTaxaEscalao">Taxa Escalão</Label>
@@ -96,11 +46,8 @@ class TraditionalRenting extends React.Component {
             type="number"
             id="inputTaxaEscalao"
             placeholder="23.6"
-            onChange={({ target: { value } }) =>
-              //setInsuranceValue(value)
-              {}
-            }
-            //value={insuranceValue}
+            onChange={({ target: { value } }) => this.props.setIrsTax(value)}
+            value={this.props.irsTax}
           />
         </FormGroup>
       );
@@ -127,9 +74,9 @@ class TraditionalRenting extends React.Component {
                           id="inputValorImovel"
                           placeholder="90000"
                           onChange={({ target: { value } }) =>
-                            setPropertyValue(value)
+                            this.props.setPropertyValue(value)
                           }
-                          value={propertyValue}
+                          value={this.props.propertyValue}
                         />
                       </FormGroup>
                       <FormGroup className="col-md-6">
@@ -141,55 +88,53 @@ class TraditionalRenting extends React.Component {
                           id="inputValorCondominio"
                           placeholder="60"
                           onChange={({ target: { value } }) =>
-                            //setCondominiumValue(value)
-                            {}
+                            this.props.setCondominiumValue(value)
                           }
-                          //value={condominiumValue}
+                          value={this.props.condominiumValue}
                         />
                       </FormGroup>
                     </div>
                     <div className="form-row">
                       <FormGroup className="col-md-6">
-                        <Label for="inputValorRenda">Valor Médio Noite</Label>
+                        <Label for="inputValorMedioNoite">
+                          Valor Médio Noite
+                        </Label>
                         <Input
                           type="number"
-                          id="inputValorRenda"
+                          id="inputValorMedioNoite"
                           placeholder="600"
                           onChange={({ target: { value } }) =>
-                            //setIncomeValue(value)
-                            {}
+                            this.props.setNightAverageIncome(value)
                           }
-                          //value={incomeValue}
+                          value={this.props.nightAverageIncome}
                         />
                       </FormGroup>
                       <FormGroup className="col-md-6">
-                        <Label for="inputOutrasDespesas">Valor Seguro</Label>
+                        <Label for="inputSeguro">Valor Seguro</Label>
                         <Input
                           type="number"
-                          id="inputOutrasDespesas"
+                          id="inputSeguro"
                           placeholder="0"
                           onChange={({ target: { value } }) =>
-                            //setOtherExpenses(value)
-                            {}
+                            this.props.setInsuranceValue(value)
                           }
-                          //value={otherExpenses}
+                          value={this.props.insuranceValue}
                         />
                       </FormGroup>
                     </div>
                     <div className="form-row">
                       <FormGroup className="col-md-6">
-                        <Label for="inputTaxaIRS">
+                        <Label for="inputTaxaOcupacao">
                           Taxa Média Ocupação (%)
                         </Label>
                         <Input
                           type="number"
-                          id="inputTaxaIRS"
+                          id="inputTaxaOcupacao"
                           placeholder="28"
                           onChange={({ target: { value } }) =>
-                            //setIRSTax(value)
-                            {}
+                            this.props.setAverageOccupation(value)
                           }
-                          //value={iRSTax}
+                          value={this.props.averageOccupation}
                         />
                       </FormGroup>
                       <FormGroup className="col-md-6">
@@ -201,27 +146,25 @@ class TraditionalRenting extends React.Component {
                           id="inputDespesasExtraorinarias"
                           placeholder="200"
                           onChange={({ target: { value } }) =>
-                            //setExtraExpenses(value)
-                            {}
+                            this.props.setExtraExpenses(value)
                           }
-                          //value={extraExpenses}
+                          value={this.props.extraExpenses}
                         />
                       </FormGroup>
                     </div>
                     <div className="form-row">
                       <FormGroup className="col-md-6">
-                        <Label for="inputValorImovel">
+                        <Label for="inputDespesaOcupacao">
                           Despesa Por Ocupação (%)
                         </Label>
                         <Input
                           type="number"
-                          id="inputValorIMI"
+                          id="inputDespesaOcupacao"
                           placeholder="200"
                           onChange={({ target: { value } }) =>
-                            //setIMIValue(value)
-                            {}
+                            this.props.setOccupationExpense(value)
                           }
-                          //value={imiValue}
+                          value={this.props.occupationExpense}
                         />
                       </FormGroup>
                       <div className="col-md-6">
@@ -237,10 +180,11 @@ class TraditionalRenting extends React.Component {
                                 id="autonomousTributation"
                                 value={LR_AUTONOMOUS_TRIBUTATION}
                                 onChange={({ target: { value } }) =>
-                                  setTributationType(value)
+                                  this.props.setTributationType(value)
                                 }
                                 defaultChecked={
-                                  tributationType === LR_AUTONOMOUS_TRIBUTATION
+                                  this.props.tributationType ===
+                                  LR_AUTONOMOUS_TRIBUTATION
                                 }
                               />
                               Tributação Autónoma
@@ -255,10 +199,11 @@ class TraditionalRenting extends React.Component {
                                 id="simplifiedRegime"
                                 value={LR_SIMPLIFIED_REGIME}
                                 onChange={({ target: { value } }) =>
-                                  setTributationType(value)
+                                  this.props.setTributationType(value)
                                 }
                                 defaultChecked={
-                                  tributationType === LR_SIMPLIFIED_REGIME
+                                  this.props.tributationType ===
+                                  LR_SIMPLIFIED_REGIME
                                 }
                               />
                               Regime Simplificado
@@ -270,16 +215,15 @@ class TraditionalRenting extends React.Component {
                     </div>
                     <div className="form-row">
                       <FormGroup className="col-md-6">
-                        <Label for="inputValorImovel">Valor IMI (Anual)</Label>
+                        <Label for="inputValorIMI">Valor IMI (Anual)</Label>
                         <Input
                           type="number"
                           id="inputValorIMI"
                           placeholder="200"
                           onChange={({ target: { value } }) =>
-                            //setIMIValue(value)
-                            {}
+                            this.props.setImiValue(value)
                           }
-                          //value={imiValue}
+                          value={this.props.imiValue}
                         />
                       </FormGroup>
                       {taxRate}
@@ -305,28 +249,33 @@ class TraditionalRenting extends React.Component {
                         </thead>
                         <tbody>
                           <tr>
-                            <td>Total custos anuais (s/ IRS)</td>
-                            <td>{totalExpenses}</td>
+                            <td>Total custos anuais (s/ Impostos)</td>
+                            <td>{this.props.totalExpenses}</td>
                           </tr>
                           <tr>
-                            <td>IRS</td>
-                            <td>{totalIRS}</td>
+                            <td>
+                              {this.props.tributationType ===
+                              LR_AUTONOMOUS_TRIBUTATION
+                                ? "Tributação"
+                                : "IRS"}
+                            </td>
+                            <td>{this.props.totalTax}</td>
                           </tr>
                           <tr>
                             <td>Total Despesas</td>
-                            <td>{totalExpensesWithIRS}</td>
+                            <td>{this.props.totalExpensesWithTax}</td>
                           </tr>
                           <tr>
-                            <td>Rendimento Líquido (Anual)</td>
-                            <td>{totalProfit}</td>
+                            <td>Rendimento Líquido</td>
+                            <td>{this.props.totalProfit}</td>
                           </tr>
                           <tr>
                             <td>Taxa Rentabilidade (%)</td>
-                            <td>{profitabilityTax}</td>
+                            <td>{this.props.profitabilityTax}</td>
                           </tr>
                           <tr>
                             <td>Prazo Retorno</td>
-                            <td>{returnTime}</td>
+                            <td>{this.props.returnTime}</td>
                           </tr>
                         </tbody>
                       </Table>
@@ -342,4 +291,4 @@ class TraditionalRenting extends React.Component {
   }
 }
 
-export default TraditionalRenting;
+export default LocalRenting;

@@ -17,41 +17,6 @@ import {
 } from "reactstrap";
 
 class TraditionalRenting extends React.Component {
-  notifySuccess = place => {
-    var options = {};
-    options = {
-      place: place,
-      message: (
-        <div>
-          <div>
-            <b>Sucesso</b>
-          </div>
-        </div>
-      ),
-      type: "success",
-      icon: "tim-icons icon-check-2",
-      autoDismiss: 7
-    };
-    this.refs.notificationAlert.notificationAlert(options);
-  };
-
-  notifyError = place => {
-    var options = {};
-    options = {
-      place: place,
-      message: (
-        <div>
-          <div>
-            <b>Erro</b>
-          </div>
-        </div>
-      ),
-      type: "danger",
-      icon: "tim-icons icon-alert-circle-exec",
-      autoDismiss: 7
-    };
-    this.refs.notificationAlert.notificationAlert(options);
-  };
 
   render() {
     const {
@@ -211,7 +176,7 @@ class TraditionalRenting extends React.Component {
                     <CardHeader>
                       <CardTitle tag="h4">Resultados</CardTitle>
                     </CardHeader>
-                    <CardBody>
+                    <CardBody className>
                       <Table className="table_results" responsive>
                         <thead>
                           <tr>
