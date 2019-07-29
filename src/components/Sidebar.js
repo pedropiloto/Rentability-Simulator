@@ -4,7 +4,7 @@ import { PropTypes } from "prop-types";
 import PerfectScrollbar from "perfect-scrollbar";
 
 import { Nav } from "reactstrap";
-import logo from "assets/img/logo.png";
+import logo from "../assets/img/logo.png";
 
 var ps;
 

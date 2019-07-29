@@ -7,9 +7,9 @@ import PerfectScrollbar from "perfect-scrollbar";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
 
-import routes from "routes.js";
+import routes from "./routes.js";
 
-import NavigationBar from "components/NavigationBar";
+import NavigationBar from "./components/NavigationBar";
 
 var ps;
 
