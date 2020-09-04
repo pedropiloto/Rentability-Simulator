@@ -11,7 +11,7 @@
     "express-favicon": "^2.0.1",
     "history": "4.7.2",
     "lodash.get": "^4.4.2",
-    "node-sass": "4.9.3",
+    "node-sass": "4.13.1",
     "path": "^0.12.7",
     "perfect-scrollbar": "1.4.0",
     "prop-types": "^15.6.2",
