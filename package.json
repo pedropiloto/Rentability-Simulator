@@ -7,7 +7,7 @@
     "bootstrap": ">=4.3.1",
     "chart.js": "^2.7.2",
     "classnames": "2.2.6",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-favicon": "^2.0.1",
     "history": "4.7.2",
     "lodash.get": "^4.4.2",
